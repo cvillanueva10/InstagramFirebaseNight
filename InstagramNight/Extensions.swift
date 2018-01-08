@@ -10,16 +10,20 @@ import UIKit
 
 
 extension UIColor {
-    static let tealBlue = UIColor(red: 30/255, green: 161/255, blue: 243/255, alpha: 1)
-    static let darkBlue = UIColor(red: 36/255, green: 52/255, blue: 71/255, alpha: 1)
-    static let veryDarkBlue = UIColor(red: 20/255, green: 29/255, blue: 39/255, alpha: 1)
+    // colors we will repeatedly use in our app
+    static let tealBlue = UIColor.rgb(red: 30, green: 161, blue: 243)
+    static let darkBlue = UIColor.rgb(red: 36, green: 52, blue: 71)
+    static let veryDarkBlue = UIColor.rgb(red: 20, green: 29, blue: 39)
+    static let dullTealBlue = UIColor.rgb(red: 149, green: 204, blue: 244)
     
+    // custom function to make creating custom colors easier
     static func rgb(red: CGFloat, green: CGFloat, blue: CGFloat) -> UIColor {
         return UIColor(red: red/255, green: green/255, blue: blue/255, alpha: 1)
     }
 }
 
 extension UIView {
+    // custom anchor function to make using auto layout easier and less tedious
     func anchor(top: NSLayoutYAxisAnchor?, paddingTop: CGFloat, left: NSLayoutXAxisAnchor?, paddingLeft: CGFloat, bottom: NSLayoutYAxisAnchor?, paddingBotton: CGFloat, right: NSLayoutXAxisAnchor?, paddingRight: CGFloat, width: CGFloat, height: CGFloat){
         
         translatesAutoresizingMaskIntoConstraints = false

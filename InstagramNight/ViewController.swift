@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ViewController: UIViewController {
     
@@ -17,7 +18,7 @@ class ViewController: UIViewController {
         return button
     }()
     
-    let emailTextField: UITextField = {
+    lazy var emailTextField: UITextField = {
         let textField = UITextField()
         textField.backgroundColor = .veryDarkBlue
         textField.tintColor = .white
@@ -26,10 +27,12 @@ class ViewController: UIViewController {
         textField.attributedPlaceholder = attributedPlaceholder
         textField.borderStyle = .roundedRect
         textField.font = UIFont.systemFont(ofSize: 14)
+        textField.isUserInteractionEnabled = true
+        textField.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
         return textField
     }()
     
-    let usernameTextField: UITextField = {
+    lazy var usernameTextField: UITextField = {
         let textField = UITextField()
         textField.backgroundColor = .veryDarkBlue
         textField.tintColor = .white
@@ -37,11 +40,12 @@ class ViewController: UIViewController {
         let attributedPlaceholder: NSAttributedString = NSMutableAttributedString(string: "Username", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white])
         textField.attributedPlaceholder = attributedPlaceholder
         textField.borderStyle = .roundedRect
-         textField.font = UIFont.systemFont(ofSize: 14)
+        textField.font = UIFont.systemFont(ofSize: 14)
+        textField.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
         return textField
     }()
     
-    let passwordTextField: UITextField = {
+    lazy var passwordTextField: UITextField = {
         let textField = UITextField()
         textField.backgroundColor = .veryDarkBlue
         textField.tintColor = .white
@@ -50,7 +54,8 @@ class ViewController: UIViewController {
         textField.attributedPlaceholder = attributedPlaceholder
         textField.isSecureTextEntry = true
         textField.borderStyle = .roundedRect
-         textField.font = UIFont.systemFont(ofSize: 14)
+        textField.font = UIFont.systemFont(ofSize: 14)
+        textField.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
         return textField
     }()
     
@@ -62,22 +67,56 @@ class ViewController: UIViewController {
         return stackView
     }()
     
-    let signUpButton: UIButton = {
+    lazy var signUpButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Sign Up", for: .normal)
-        button.backgroundColor = .tealBlue
+        button.backgroundColor = .dullTealBlue
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 5
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        button.addTarget(self, action: #selector(handleSignUp), for: .touchUpInside)
+        button.isEnabled = false
         return button
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         setupInputFields()
     }
     
+    // Add user to Firebase using form values
+    @objc private func handleSignUp() {
+        guard let email = emailTextField.text, email.count > 0 else { return }
+        guard let username = usernameTextField.text, username.count > 0 else { return }
+        guard let password = passwordTextField.text, password.count > 6 else { return }
+        Auth.auth().createUser(withEmail: email, password: password) { (user: User?, error: Error?) in
+            
+            if let error = error {
+                print("Failed to create user: ", error)
+                // add a UI alert action later
+            }
+            print("Successfully created user: ", user?.uid ?? "")
+        }
+    }
+    
+    
+    // Checks to see if all form fields have values entered
+    // and correspondingly changes the button color
+    @objc private func handleTextInputChange() {
+        let isFormValid = emailTextField.text?.count ?? 0 > 0 && usernameTextField.text?.count ?? 0 > 0 && passwordTextField.text?.count ?? 0 > 0
+        
+        if isFormValid {
+            signUpButton.isEnabled = true
+            signUpButton.backgroundColor = .tealBlue
+        } else {
+            signUpButton.isEnabled = false
+            signUpButton.backgroundColor = .dullTealBlue
+        }
+        
+    }
+    
+    // Set up our application's appearance
     fileprivate func setupUI(){
         view.backgroundColor = .darkBlue
         view.addSubview(plusPhotoButton)

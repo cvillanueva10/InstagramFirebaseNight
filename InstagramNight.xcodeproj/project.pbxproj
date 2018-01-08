@@ -13,9 +13,12 @@
 		56A4487E20032C0A00785D8E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56A4487D20032C0A00785D8E /* Assets.xcassets */; };
 		56A4488120032C0A00785D8E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56A4487F20032C0A00785D8E /* LaunchScreen.storyboard */; };
 		56A4488920032C1600785D8E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A4488820032C1600785D8E /* Extensions.swift */; };
+		56A4488B20033E9A00785D8E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 56A4488A20033E9900785D8E /* GoogleService-Info.plist */; };
+		7D6DFF1EA7E6B4A09E45BB21 /* Pods_InstagramNight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC43FF7975426EEACA3A865E /* Pods_InstagramNight.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		187D5222AA785209F191B437 /* Pods-InstagramNight.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstagramNight.release.xcconfig"; path = "Pods/Target Support Files/Pods-InstagramNight/Pods-InstagramNight.release.xcconfig"; sourceTree = "<group>"; };
 		56A4487320032C0A00785D8E /* InstagramNight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstagramNight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56A4487620032C0A00785D8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		56A4487820032C0A00785D8E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -24,6 +27,9 @@
 		56A4488020032C0A00785D8E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		56A4488220032C0A00785D8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		56A4488820032C1600785D8E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		56A4488A20033E9900785D8E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9E9347C181C0FF8CAB674C77 /* Pods-InstagramNight.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstagramNight.debug.xcconfig"; path = "Pods/Target Support Files/Pods-InstagramNight/Pods-InstagramNight.debug.xcconfig"; sourceTree = "<group>"; };
+		AC43FF7975426EEACA3A865E /* Pods_InstagramNight.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InstagramNight.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D6DFF1EA7E6B4A09E45BB21 /* Pods_InstagramNight.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +49,8 @@
 			children = (
 				56A4487520032C0A00785D8E /* InstagramNight */,
 				56A4487420032C0A00785D8E /* Products */,
+				F99C09B00587D5F3BD4BC97B /* Pods */,
+				C23813D506F5094F42E06360 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -59,12 +68,30 @@
 				56A4487620032C0A00785D8E /* AppDelegate.swift */,
 				56A4487820032C0A00785D8E /* ViewController.swift */,
 				56A4487A20032C0A00785D8E /* Main.storyboard */,
+				56A4488820032C1600785D8E /* Extensions.swift */,
 				56A4487D20032C0A00785D8E /* Assets.xcassets */,
 				56A4487F20032C0A00785D8E /* LaunchScreen.storyboard */,
 				56A4488220032C0A00785D8E /* Info.plist */,
-				56A4488820032C1600785D8E /* Extensions.swift */,
+				56A4488A20033E9900785D8E /* GoogleService-Info.plist */,
 			);
 			path = InstagramNight;
+			sourceTree = "<group>";
+		};
+		C23813D506F5094F42E06360 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AC43FF7975426EEACA3A865E /* Pods_InstagramNight.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F99C09B00587D5F3BD4BC97B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9E9347C181C0FF8CAB674C77 /* Pods-InstagramNight.debug.xcconfig */,
+				187D5222AA785209F191B437 /* Pods-InstagramNight.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +101,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 56A4488520032C0A00785D8E /* Build configuration list for PBXNativeTarget "InstagramNight" */;
 			buildPhases = (
+				D9C1ADAF7F6D2F11F92F1290 /* [CP] Check Pods Manifest.lock */,
 				56A4486F20032C0A00785D8E /* Sources */,
 				56A4487020032C0A00785D8E /* Frameworks */,
 				56A4487120032C0A00785D8E /* Resources */,
+				E033C6106C44A33070A59400 /* [CP] Embed Pods Frameworks */,
+				7911684F9FDA850E8FBA90FD /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -129,10 +159,59 @@
 				56A4488120032C0A00785D8E /* LaunchScreen.storyboard in Resources */,
 				56A4487E20032C0A00785D8E /* Assets.xcassets in Resources */,
 				56A4487C20032C0A00785D8E /* Main.storyboard in Resources */,
+				56A4488B20033E9A00785D8E /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7911684F9FDA850E8FBA90FD /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-InstagramNight/Pods-InstagramNight-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D9C1ADAF7F6D2F11F92F1290 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E033C6106C44A33070A59400 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-InstagramNight/Pods-InstagramNight-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		56A4486F20032C0A00785D8E /* Sources */ = {
@@ -276,6 +355,7 @@
 		};
 		56A4488620032C0A00785D8E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9E9347C181C0FF8CAB674C77 /* Pods-InstagramNight.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -291,6 +371,7 @@
 		};
 		56A4488720032C0A00785D8E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 187D5222AA785209F191B437 /* Pods-InstagramNight.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
