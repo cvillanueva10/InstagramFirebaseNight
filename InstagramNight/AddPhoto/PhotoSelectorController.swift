@@ -24,8 +24,8 @@ class PhotoSelectorController: UICollectionViewController, UICollectionViewDeleg
         
         setupNavigationButton()
         
-        collectionView?.register(PhotoSelectorCell.self, forCellWithReuseIdentifier: cellId)
-        collectionView?.register(PhotoSelectorCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
+        collectionView?.register(PhotoCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView?.register(PhotoCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
         
         fetchPhotos()
     }
@@ -72,7 +72,6 @@ class PhotoSelectorController: UICollectionViewController, UICollectionViewDeleg
     }
     
     fileprivate func setupNavigationButton() {
-        
         navigationController?.navigationBar.tintColor = .white
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(handleNext))
@@ -95,10 +94,10 @@ class PhotoSelectorController: UICollectionViewController, UICollectionViewDeleg
         collectionView.scrollToItem(at: indexPath, at: .bottom, animated: true)
     }
     
-    var header: PhotoSelectorCell?
+    var header: PhotoCell?
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! PhotoSelectorCell
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! PhotoCell
         
         self.header = header
         header.photoImageView.image = selectedImage
@@ -142,7 +141,7 @@ class PhotoSelectorController: UICollectionViewController, UICollectionViewDeleg
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! PhotoSelectorCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! PhotoCell
         cell.photoImageView.image = images[indexPath.item]
         return cell
     }

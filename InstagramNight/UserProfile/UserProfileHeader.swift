@@ -71,16 +71,17 @@ class UserProfileHeader: UICollectionViewCell, UIComponentBuilder {
         return line 
     }()
    
-    var profileImageView: UIImageView = {
-        let imageView = UIImageView()
+    var profileImageView: CustomImageView = {
+        let imageView = CustomImageView()
         imageView.clipsToBounds = true
         return imageView
     }()
     
     var user: User? {
         didSet {
-           setupProfileImage()
-           usernameLabel.text = user?.username
+            guard let profileImageUrl = user?.profileImageUrl else { return }
+            profileImageView.loadImage(urlString: profileImageUrl)
+            usernameLabel.text = user?.username
         }
     }
 
@@ -88,9 +89,7 @@ class UserProfileHeader: UICollectionViewCell, UIComponentBuilder {
         super.init(frame: frame)
     
         backgroundColor = .darkBlue
-        
-       
-        
+ 
         setupUI()
     }
     
@@ -155,22 +154,6 @@ class UserProfileHeader: UICollectionViewCell, UIComponentBuilder {
         profileImageView.anchor(top: topNavBarDividerView.topAnchor, paddingTop: 12 , left: leftAnchor, paddingLeft: 12, bottom: nil, paddingBotton: 0, right: nil, paddingRight: 0, width: 80, height: 80)
         profileImageView.layer.cornerRadius = 80 / 2
         
-        guard let profileImageUrlString = user?.profileImageUrl else { return }
-        guard let url = URL(string: profileImageUrlString) else { return }
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
-            
-            if let error = error {
-                print("Failed to fetch user: ", error)
-            }
-            
-            guard let data = data else { return }
-            print(data)
-            let image = UIImage(data: data)
-            DispatchQueue.main.async {
-                self.profileImageView.image = image
-            }
-            
-            }.resume()
     }
     
     required init?(coder aDecoder: NSCoder) {

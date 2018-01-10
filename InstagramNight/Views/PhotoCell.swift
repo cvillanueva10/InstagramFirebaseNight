@@ -8,16 +8,26 @@
 
 import UIKit
 
-class PhotoSelectorCell: UICollectionViewCell {
+class PhotoCell: UICollectionViewCell {
     
-    let photoImageView: UIImageView = {
-        let iv = UIImageView()
+    let photoImageView: CustomImageView = {
+        let iv = CustomImageView()
         iv.backgroundColor = .lightGray
         iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true
         iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
     }()
+    
+    var post: Post? {
+        didSet{
+             guard let imageUrl = post?.imageUrl else { return }
+            photoImageView.loadImage(urlString: imageUrl)
+           
+            
+          
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
