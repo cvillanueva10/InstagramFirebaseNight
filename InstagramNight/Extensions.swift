@@ -35,7 +35,7 @@ extension UIView {
             self.leftAnchor.constraint(equalTo: left, constant: paddingLeft).isActive = true
         }
         if let bottom = bottom {
-            self.bottomAnchor.constraint(equalTo: bottom, constant: paddingBotton).isActive = true
+            self.bottomAnchor.constraint(equalTo: bottom, constant: -paddingBotton).isActive = true
         }
         if let right = right {
             self.rightAnchor.constraint(equalTo: right, constant: paddingRight).isActive = true
@@ -46,6 +46,52 @@ extension UIView {
         if height != 0 {
             self.heightAnchor.constraint(equalToConstant: height).isActive = true
         }
-        
     }
 }
+
+protocol UIComponentBuilder {
+    func createButtonWithTitle(title: String) -> UIButton
+    func createButtonWithImage(image: UIImage) -> UIButton
+    func createLabelWithTitle(title: String, font: UIFont) -> UILabel
+}
+
+extension UIComponentBuilder {
+    func createButtonWithTitle(title: String) -> UIButton {
+        let button = UIButton(type: .system)
+        button.setTitle(title, for: .normal)
+        button.tintColor = .white
+        button.backgroundColor = .darkBlue
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }
+    
+    func createButtonWithImage(image: UIImage) -> UIButton {
+        let button = UIButton(type: .system)
+        button.setImage(image, for: .normal)
+        button.tintColor = .white
+        button.contentMode = .scaleAspectFit 
+        button.backgroundColor = .darkBlue
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }
+    
+    func createLabelWithTitle(title: String, font: UIFont) -> UILabel{
+        let label = UILabel()
+        label.text = title
+        label.numberOfLines = 0
+        label.textColor = .white
+        label.backgroundColor = .darkBlue
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = font
+        return label
+    }
+}
+
+
+
+
+

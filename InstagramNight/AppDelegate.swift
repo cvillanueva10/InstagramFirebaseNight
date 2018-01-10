@@ -17,13 +17,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        UINavigationBar.appearance().isTranslucent = false
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        UINavigationBar.appearance().tintColor = .white
+        UINavigationBar.appearance().barTintColor = .darkBlue
+
+        
         UIApplication.shared.statusBarStyle = .lightContent
+        FirebaseApp.configure()
         window = UIWindow()
         window?.makeKeyAndVisible()
-        let viewController = ViewController()
-        //let navigationController = CustomNavigationController(rootViewController: viewController)
-        window?.rootViewController = viewController
-        FirebaseApp.configure()
+        window?.rootViewController = MainTabBarController() 
+        
 
         return true
     }
